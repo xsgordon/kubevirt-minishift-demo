@@ -30,6 +30,14 @@ This creates a new minishift environment and deploys KubeVirt as well as the Con
 
 As pulling the images and starting them takes some time, particularly on conference wifi, this is typically a step to perform before the demonstration so that time is focused instead on what the resultant setup can actually do.
 
+Inventory
+---------
+
+* `cirros-vm.yaml` - Create a basic Cirros virtual machine using a `RegistryDisk`, pulls image from Docker Hub.
+* `cirros-pvc.yaml` - Create a `PersistentVolume` containing a Cirros disk image using the Containerized Data Importer, `img` file pulled via HTTP.
+* `cirros-pvc-vm.yaml` - Create a basic Cirros virtual machine using a `PersistentVolume`.
+* `cirros-clone-pvc.yaml` - Create a clone of the `PersistentVolume` created by `cirros-pvc.yaml` using the Containerized Data Importer.
+
 Basic KubeVirt Demo Flow
 ------------------------
 
