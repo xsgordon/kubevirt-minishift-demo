@@ -1,6 +1,6 @@
 export MINISHIFT_ENABLE_EXPERIMENTAL=y
 export KUBEVIRT_VERSION=v0.6.4
-export CDI_VERSION=v1.1.0
+export CDI_VERSION=v1.1.1
 
 MINISHIFT=`which minishift`
 if [ "$?" -ne "0" ]; then
@@ -36,6 +36,9 @@ ${MINISHIFT} start \
           --memory 4GB \
           --iso-url "centos" \
           --openshift-version v3.10.0
+
+# Sorry Dan...
+${MINISHIFT} ssh "sudo setenforce 0"
 
 ${OC} login -u system:admin
 
