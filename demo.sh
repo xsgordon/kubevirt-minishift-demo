@@ -52,3 +52,8 @@ ${OC} apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT
 
 echo "INFO: Deploying Containerized Data Importer..."
 ${OC} apply -f https://github.com/kubevirt/containerized-data-importer/releases/download/${CDI_VERSION}/cdi-controller.yaml
+
+# Let's pull some images we know we will need later, focus is ones the manifests wont have pulled in..
+${MINISHIFT} ssh "docker pull kubevirt/virt-handler:${KUBEVIRT_VERSION}"
+${MINISHIFT} ssh "docker pull kubevirt/cirros-registry-disk-demo:latest"
+${MINISHIFT} ssh "docker pull kubevirt/fedora-cloud-registry-disk-demo:latest"
