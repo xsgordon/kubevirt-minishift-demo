@@ -1,5 +1,6 @@
 export MINISHIFT_ENABLE_EXPERIMENTAL=y
-export KUBEVIRT_VERSION=v0.6.4
+#export KUBEVIRT_VERSION=v0.6.4
+export KUBEVIRT_VERSION=v0.8.0
 export CDI_VERSION=v1.1.1
 
 MINISHIFT=`which minishift`
@@ -35,7 +36,7 @@ ${MINISHIFT} start \
           --vm-driver=kvm \
           --memory 4GB \
           --iso-url "centos" \
-          --openshift-version v3.10.0
+          --openshift-version v3.10.0 \
 
 # Sorry Dan...
 ${MINISHIFT} ssh "sudo setenforce 0"
@@ -49,6 +50,15 @@ ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:ku
 
 echo "INFO: Define config-map for emulation mode..."
 ${OC} create configmap -n kube-system kubevirt-config --from-literal debug.useEmulation=true
+
+echo "INFO: Applying workarounds, if any defined."
+${MINISHIFT} hostfolder remove DEMO_SCRIPT
+${MINISHIFT} hostfolder add DEMO_SCRIPT \
+                            --instance-only \
+                            --source `pwd` \
+                            --target /home/docker/kubevirt-minishift-demo
+${MINISHIFT} hostfolder mount DEMO_SCRIPT
+${MINISHIFT} ssh "kubevirt-minishift-demo/workarounds.sh"
 
 echo "INFO: Deploying KubeVirt..."
 ${OC} apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_VERSION}/kubevirt.yaml
