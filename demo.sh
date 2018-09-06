@@ -47,6 +47,9 @@ ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:ku
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-controller
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-infra
 
+echo "INFO: Define config-map for emulation mode..."
+${OC} create configmap -n kube-system kubevirt-config --from-literal debug.useEmulation=true
+
 echo "INFO: Deploying KubeVirt..."
 ${OC} apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_VERSION}/kubevirt.yaml
 
