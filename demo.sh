@@ -46,7 +46,7 @@ ${OC} login -u system:admin
 echo "INFO: Configuring system policy..."
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-privileged
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-controller
-${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-infra
+${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-apiserver
 
 echo "INFO: Define config-map for emulation mode..."
 ${OC} create configmap -n kube-system kubevirt-config --from-literal debug.useEmulation=true
