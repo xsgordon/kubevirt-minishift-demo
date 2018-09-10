@@ -38,9 +38,6 @@ ${MINISHIFT} start \
           --iso-url "centos" \
           --openshift-version v3.10.0 \
 
-# Sorry Dan...
-${MINISHIFT} ssh "sudo setenforce 0"
-
 ${OC} login -u system:admin
 
 echo "INFO: Configuring system policy..."
