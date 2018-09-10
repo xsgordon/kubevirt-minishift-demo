@@ -1,0 +1,45 @@
+apiVersion: kubevirt.io/v1alpha2
+kind: VirtualMachine
+metadata:
+  creationTimestamp: null
+  labels:
+    kubevirt.io/vm: fedora-vm
+  name: fedora-vm
+spec:
+  running: false
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubevirt.io/vm: fedora-vm
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: registrydisk
+            volumeName: registryvolume
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+            volumeName: cloudinitvolume
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 512M
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - name: registryvolume
+        registryDisk:
+          image: kubevirt/fedora-cloud-registry-disk-demo:latest
+      - cloudInitNoCloud:
+          userData: |
+            #cloud-config
+              users:
+                  - name: shadowman
+                    lock_passwd: false
+                    passwd: $1$SaltSalt$JTGvFHUx8L0/zris1k3CT.
+        name: cloudinitvolume
+status: {}
