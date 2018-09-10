@@ -48,9 +48,6 @@ ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:ku
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-controller
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-apiserver
 
-echo "INFO: Define config-map for emulation mode..."
-${OC} create configmap -n kube-system kubevirt-config --from-literal debug.useEmulation=true
-
 echo "INFO: Applying workarounds, if any defined."
 ${MINISHIFT} hostfolder remove DEMO_SCRIPT
 ${MINISHIFT} hostfolder add DEMO_SCRIPT \

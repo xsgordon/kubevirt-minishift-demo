@@ -17,7 +17,7 @@ Currently before running the demonstration script it is necessary to download an
 2. `kubectl`
 3. `virtctl`
 
-KubeVirt and the Containerized Data Importer will be installed by the demo scripts.
+The host system must also be enabled for nested KVM. KubeVirt and the Containerized Data Importer will be installed by the demo scripts.
 
 Usage
 -----
