@@ -44,7 +44,7 @@ echo "INFO: Configuring system policy..."
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-privileged
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-controller
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-apiserver
-${OC} adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:kweb-ui:default 
+${OC} adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:kweb-ui:default
 
 echo "INFO: Applying workarounds, if any defined."
 ${MINISHIFT} hostfolder remove DEMO_SCRIPT
