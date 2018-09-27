@@ -44,7 +44,7 @@ echo "INFO: Configuring system policy..."
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-privileged
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-controller
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-apiserver
-${OC} adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:kweb-ui:default
+${OC} adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:kubevirt-web-ui:default
 
 echo "INFO: Applying workarounds, if any defined."
 ${MINISHIFT} hostfolder remove DEMO_SCRIPT
@@ -67,7 +67,7 @@ ${MINISHIFT} ssh "docker pull kubevirt/cirros-registry-disk-demo:latest"
 ${MINISHIFT} ssh "docker pull kubevirt/fedora-cloud-registry-disk-demo:latest"
 
 echo "INFO: Deploying kubevirt-web-ui..."
-${OC} new-project kweb-ui
-${OC} apply -f kubevirt-web-ui.yaml
+${OC} new-project kubevirt-web-ui
+${OC} apply -f https://raw.githubusercontent.com/kubevirt/web-ui/master/kubevirt/kubevirt-web-ui.yaml
 ${OC} project kubevirt-demo
-${OC} get route -n kweb-ui -o custom-columns="KUBEVIRT UI URL":.spec.host
+${OC} get route -n kubevirt-web-ui -o custom-columns="KUBEVIRT UI URL":.spec.host
