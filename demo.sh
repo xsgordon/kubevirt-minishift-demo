@@ -1,6 +1,6 @@
 export MINISHIFT_ENABLE_EXPERIMENTAL=y
-export KUBEVIRT_VERSION=v0.8.0
-export CDI_VERSION=v1.1.1
+export KUBEVIRT_VERSION=v0.9.0-alpha.0
+export CDI_VERSION=v1.2.0
 
 MINISHIFT=`which minishift`
 if [ "$?" -ne "0" ]; then
@@ -39,6 +39,7 @@ ${MINISHIFT} start \
 
 ${OC} login -u system:admin
 ${OC} new-project kubevirt-demo
+${OC} new-project kubevirt-clone-demo
 
 echo "INFO: Configuring system policy..."
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-privileged
