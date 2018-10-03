@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: "cirros-clone-pvc"
-  namespace: "myproject"
+  namespace: "kubevirt-demo"
   labels:
     app: Host-Assisted-Cloning
   annotations:
