@@ -6,7 +6,7 @@ metadata:
   labels:
     app: Host-Assisted-Cloning
   annotations:
-    k8s.io/CloneRequest: "source-ns/cirros-pvc"
+    k8s.io/CloneRequest: "kubevirt-demo/cirros-pvc"
 spec:
   accessModes:
   - ReadWriteOnce
