@@ -45,6 +45,7 @@ ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:ku
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-controller
 ${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:kubevirt-apiserver
 ${OC} adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:kubevirt-web-ui:default
+${OC} adm policy add-scc-to-user privileged system:serviceaccount:kube-system:cdi-sa
 
 echo "INFO: Applying workarounds, if any defined."
 ${MINISHIFT} hostfolder remove DEMO_SCRIPT
