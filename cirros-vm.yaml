@@ -24,11 +24,17 @@ spec:
               bus: virtio
             name: cloudinitdisk
             volumeName: cloudinitvolume
+          interfaces:
+          - name: default
+            bridge: {}
         machine:
           type: ""
         resources:
           requests:
             memory: 64M
+      networks:
+      - name: default
+        pod: {}
       terminationGracePeriodSeconds: 0
       volumes:
       - name: registryvolume

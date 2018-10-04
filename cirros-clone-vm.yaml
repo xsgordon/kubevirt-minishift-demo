@@ -20,11 +20,17 @@ spec:
               bus: virtio
             name: pvcdisk1
             volumeName: pvcvolume
+          interfaces:
+            - name: default
+              bridge: {}
         machine:
           type: ""
         resources:
           requests:
             memory: 64M
+      networks:
+      - name: default
+        pod: {}
       terminationGracePeriodSeconds: 0
       volumes:
       - name: pvcvolume
