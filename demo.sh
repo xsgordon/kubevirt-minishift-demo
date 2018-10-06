@@ -1,5 +1,5 @@
 export MINISHIFT_ENABLE_EXPERIMENTAL=y
-export KUBEVIRT_VERSION=v0.9.0-alpha.0
+export KUBEVIRT_VERSION=v0.9.0
 export CDI_VERSION=v1.2.0
 
 MINISHIFT=`which minishift`
