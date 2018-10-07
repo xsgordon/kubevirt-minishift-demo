@@ -12,10 +12,9 @@ fi
 
 KUBECTL=`which kubectl`
 if [ "$?" -ne "0" ]; then
-    echo "ERROR: Unable to locate kubectl binary in path."
+    echo "WARN: Unable to locate kubectl binary in path."
     echo """HINT: Grab kubectl at:
       https://kubernetes.io/docs/tasks/tools/install-kubectl/"""
-    exit -1
 fi
 
 VIRTCTL=`which virtctl`
