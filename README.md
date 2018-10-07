@@ -68,3 +68,5 @@ The Containerized Data Importer allows us to demonstrate spawning a virtual mach
 2. Use `watch -n 2 kubectl logs <pod>` to illustrate the state of the import process.
 3. Use `kubectl create -f cirros-pvc-vm.yaml` to create a basic Cirros virtual machine based on a `PersistentVolume`.
 4. Use `kubectl create -f cirros-clone-pvc.yaml` to demonstrate cloning a volume.
+5. Use `kubectl create -f cirros-clone-vm.yaml` to demonstrate spawning a
+   virtual machine from the cloned volume.
