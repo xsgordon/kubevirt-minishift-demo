@@ -30,6 +30,12 @@ This creates a new minishift environment and deploys KubeVirt as well as the Con
 
 As pulling the images and starting them takes some time, particularly on conference wifi, this is typically a step to perform before the demonstration so that time is focused instead on what the resultant setup can actually do.
 
+Once the system is ready, use the provided YAML files to (re)create the examples
+in the `kubevirt-demo` namespace that will be selected when `demo.sh` ends. To
+clean-up the examples you can use `clean.sh`. This will only remove newly
+created entities generated from the YAML files in the current namespace. It will
+not clean up the MiniShift instance or other KubeVirt entities like the CRDs.
+
 Inventory
 ---------
 
