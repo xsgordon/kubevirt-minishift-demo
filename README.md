@@ -37,6 +37,14 @@ Inventory
 * `cirros-pvc.yaml` - Create a `PersistentVolume` containing a Cirros disk image using the Containerized Data Importer, `img` file pulled via HTTP.
 * `cirros-pvc-vm.yaml` - Create a basic Cirros virtual machine using a `PersistentVolume`.
 * `cirros-clone-pvc.yaml` - Create a clone of the `PersistentVolume` created by `cirros-pvc.yaml` using the Containerized Data Importer.
+* `cirros-clone-vm.yaml` - Create a virtual machine based on the cloned
+  `PersistentVolume` from `cirros-clone-pvc.yaml`.
+
+The `fedora-*` examples follow the same pattern as the Cirros examples above. In
+both the Cirros and Fedora examples the resultant virtual machine has basic
+networking provided by the `Pod` network. The Cirros image uses the default
+username and password baked into it (`cirros` and `gocubsgo`), the Fedora image
+uses the `shadowman` user with the `shadowman` password.
 
 Basic KubeVirt Demo Flow
 ------------------------
