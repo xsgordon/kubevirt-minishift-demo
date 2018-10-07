@@ -5,24 +5,32 @@ export CDI_VERSION=v1.2.0
 MINISHIFT=`which minishift`
 if [ "$?" -ne "0" ]; then
     echo "ERROR: Unable to locate minishift binary in path."
+    echo """HINT: Grab minishift at:
+      https://docs.okd.io/latest/minishift/getting-started/installing.html"""
     exit -1
 fi
 
 KUBECTL=`which kubectl`
 if [ "$?" -ne "0" ]; then
     echo "ERROR: Unable to locate kubectl binary in path."
+    echo """HINT: Grab kubectl at:
+      https://kubernetes.io/docs/tasks/tools/install-kubectl/"""
     exit -1
 fi
 
 VIRTCTL=`which virtctl`
 if [ "$?" -ne "0" ]; then
     echo "ERROR: Unable to locate virtctl binary in path."
+    echo """HINT: Grab virtctl at:
+      https://github.com/kubevirt/kubevirt/releases"""
     exit -1
 fi
 
 OC=`which oc`
 if [ "$?" -ne "0" ]; then
     echo "ERROR: Unable to locate oc binary in path."
+    echo """HINT: Grab oc at:
+      https://www.okd.io/download.html"""
     exit -1
 fi
 
