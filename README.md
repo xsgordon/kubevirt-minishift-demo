@@ -47,6 +47,9 @@ not clean up the MiniShift instance or other KubeVirt entities like the CRDs.
 Inventory
 ---------
 
+The following examples use the Cirros disk image and are found in
+`./examples/cirros/`:
+
 * `cirros-vm.yaml` - Create a basic Cirros virtual machine using a
   `RegistryDisk`, pulls image from Docker Hub.
 * `cirros-pvc.yaml` - Create a `PersistentVolume` containing a Cirros disk image
@@ -58,11 +61,12 @@ Inventory
 * `cirros-clone-vm.yaml` - Create a virtual machine based on the cloned
   `PersistentVolume` from `cirros-clone-pvc.yaml`.
 
-The `fedora-*` examples follow the same pattern as the Cirros examples above. In
-both the Cirros and Fedora examples the resultant virtual machine has basic
-networking provided by the `Pod` network. The Cirros image uses the default
-username and password baked into it (`cirros` and `gocubsgo`), the Fedora image
-uses the `shadowman` user with the `shadowman` password.
+The `fedora-*` examples in `./examples/fedora/` follow the same pattern as the
+Cirros examples above. In both the Cirros and Fedora examples the resultant
+virtual machine has basic networking provided by the `Pod` network. The Cirros
+image uses the default username and password baked into it (`cirros` and
+`gocubsgo`), the Fedora image uses the `shadowman` user with the `shadowman`
+password.
 
 Basic KubeVirt Demo Flow
 ------------------------
@@ -72,8 +76,8 @@ basic flow looks something like this:
 
 1. Examine the `kube-system` namespace illustrating the presence of the KubeVirt
    components.
-2. Use `kubectl create -f cirros-vm.yaml` to create a basic Cirros virtual
-   machine based on a `RegistryDisk`.
+2. Use `kubectl create -f examples/cirros/cirros-vm.yaml` to create a basic
+   Cirros virtual machine based on a `RegistryDisk`.
 3. Use `kubectl get vms` to illustrate `kubectl` can see the vm object.
 4. Use `kubectl edit vm cirros-vm` or `virtctl start cirros-vm` to create the
    `VirtualMachineInstance`.
@@ -89,15 +93,15 @@ Basic KubeVirt + Containerized Data Importer Demo Flow
 The Containerized Data Importer allows us to demonstrate spawning a virtual
 machine that uses a `PersistentVolume` instead of a `RegistryDisk`.
 
-1. Use `kubectl create -f cirros-pvc.yaml` to create the Cirros
+1. Use `kubectl create -f examples/cirros/cirros-pvc.yaml` to create the Cirros
    `PersistentVolume`.
 2. Use `watch -n 2 kubectl logs <pod>` to illustrate the state of the import
    process.
-3. Use `kubectl create -f cirros-pvc-vm.yaml` to create a basic Cirros virtual
-   machine based on a `PersistentVolume`.
-4. Use `kubectl create -f cirros-clone-pvc.yaml` to demonstrate cloning a
-   volume.
-5. Use `kubectl create -f cirros-clone-vm.yaml` to demonstrate spawning a
-   virtual machine from the cloned volume.
+3. Use `kubectl create -f examples/cirroscirros-pvc-vm.yaml` to create a basic
+   Cirros virtual machine based on a `PersistentVolume`.
+4. Use `kubectl create -f examples/cirroscirros-clone-pvc.yaml` to demonstrate
+   cloning a volume.
+5. Use `kubectl create -f examples/cirros/cirros-clone-vm.yaml` to demonstrate
+   spawning a virtual machine from the cloned volume.
 
 [1]: http://github.com/kubevirt/containerized-data-importer

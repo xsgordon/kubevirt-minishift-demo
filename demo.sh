@@ -70,8 +70,8 @@ ${MINISHIFT} ssh "docker pull kubevirt/fedora-cloud-registry-disk-demo:latest"
 
 echo "INFO: Creating backup project with PVCs pre-created"
 ${OC} new-project kubevirt-demo-backup
-${OC} create -f ./cirros-pvc.yaml
-${OC} create -f ./fedora-pvc.yaml
+${OC} create -f ./examples/cirros/cirros-pvc.yaml
+${OC} create -f ./examples/fedora/fedora-pvc.yaml
 
 echo "INFO: Deploying kubevirt-web-ui..."
 ${OC} new-project kubevirt-web-ui
