@@ -70,11 +70,6 @@ ${OC} apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT
 echo "INFO: Deploying Containerized Data Importer..."
 ${OC} apply -f https://github.com/kubevirt/containerized-data-importer/releases/download/${CDI_VERSION}/cdi-controller.yaml
 
-# Let's pull some images we know we will need later, focus is ones the manifests wont have pulled in..
-${MINISHIFT} ssh "docker pull kubevirt/virt-launcher:${KUBEVIRT_VERSION}"
-${MINISHIFT} ssh "docker pull kubevirt/cirros-registry-disk-demo:latest"
-${MINISHIFT} ssh "docker pull kubevirt/fedora-cloud-registry-disk-demo:latest"
-
 echo "INFO: Creating backup project with PVCs pre-created"
 ${OC} new-project kubevirt-demo-backup
 ${OC} create -f ./examples/cirros/cirros-pvc.yaml
@@ -85,3 +80,8 @@ ${OC} new-project kubevirt-web-ui
 ${OC} apply -f https://raw.githubusercontent.com/kubevirt/web-ui/master/kubevirt/kubevirt-web-ui.yaml
 ${OC} project kubevirt-demo
 ${OC} get route -n kubevirt-web-ui -o custom-columns="KUBEVIRT UI URL":.spec.host
+
+# Let's pull some images we know we will need later, focus is ones the manifests wont have pulled in..
+${MINISHIFT} ssh "docker pull kubevirt/virt-launcher:${KUBEVIRT_VERSION}"
+${MINISHIFT} ssh "docker pull kubevirt/cirros-registry-disk-demo:latest"
+${MINISHIFT} ssh "docker pull kubevirt/fedora-cloud-registry-disk-demo:latest"
