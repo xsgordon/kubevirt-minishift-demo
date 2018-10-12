@@ -64,6 +64,9 @@ ${MINISHIFT} hostfolder add DEMO_SCRIPT \
 ${MINISHIFT} hostfolder mount DEMO_SCRIPT
 ${MINISHIFT} ssh "kubevirt-minishift-demo/workarounds.sh"
 
+echo "INFO: Enable DataVolume feature gate..."
+${OC} apply enable-data-volume.yaml
+
 echo "INFO: Deploying KubeVirt..."
 ${OC} apply -f https://github.com/kubevirt/kubevirt/releases/download/${KUBEVIRT_VERSION}/kubevirt.yaml
 
