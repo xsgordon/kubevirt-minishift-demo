@@ -42,7 +42,7 @@ ${MINISHIFT} start \
           --vm-driver=kvm \
           --memory 4GB \
           --iso-url "centos" \
-          --openshift-version v3.10.0 \
+          --openshift-version v3.11.0 \
 
 ${OC} login -u system:admin
 ${OC} new-project kubevirt-demo
