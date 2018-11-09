@@ -78,6 +78,16 @@ ${OC} new-project kubevirt-demo-backup
 ${OC} create -f ./examples/cirros/cirros-pvc.yaml
 ${OC} create -f ./examples/fedora/fedora-pvc.yaml
 
+echo "INFO Deploying OpenShift-console..."
+git submodule update console-operator
+${OC} adm new-project console-operator
+${OC} create -f console-operator/manifests/
+
+echo "INFO Deploying Monitoring..."
+git submodule update cluster-monitoring-operator
+${OC} new-project cluster-monitoring
+${OC} create -f cluster-monitoring-operator/manifests/
+
 echo "INFO: Deploying kubevirt-web-ui..."
 ${OC} new-project kubevirt-web-ui
 #${OC} apply -f https://raw.githubusercontent.com/kubevirt/web-ui/master/kubevirt/kubevirt-web-ui.yaml

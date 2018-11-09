@@ -1,0 +1,6 @@
+[submodule "console-operator"]
+	path = console-operator
+	url = https://github.com/openshift/console-operator.git
+[submodule "cluster-monitoring-operator"]
+	path = cluster-monitoring-operator
+	url = https://github.com/openshift/cluster-monitoring-operator.git
