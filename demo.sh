@@ -90,7 +90,6 @@ ${OC} create -f cluster-monitoring-operator/manifests/
 
 echo "INFO: Deploying kubevirt-web-ui..."
 ${OC} new-project kubevirt-web-ui
-#${OC} apply -f https://raw.githubusercontent.com/kubevirt/web-ui/master/kubevirt/kubevirt-web-ui.yaml
 ${OC} apply -f kubevirt-web-ui.yaml
 ${OC} project kubevirt-demo
 ${OC} get route -n kubevirt-web-ui -o custom-columns="KUBEVIRT UI URL":.spec.host
